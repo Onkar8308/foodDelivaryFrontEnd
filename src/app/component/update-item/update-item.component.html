@@ -1,0 +1,27 @@
+<div class="bg-img">
+    <div class="content" >
+        <header>Login Form</header>
+        <form (ngSubmit)="updateItem()" #itemForm="ngForm" >
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter Item name"
+                name= "itemname" [(ngModel)]="item.itemname" #itemname="ngModel">
+            </div>
+            <div class="field space">
+                <span class="fa fa-lock"></span>
+                <input type="text" class="password" required placeholder="Enter Cost of Item" 
+                name= "itemcost" [(ngModel)]="item.itemcost" #itemcost="ngModel">
+            </div>
+            <div class="field space">
+              <span class="fa fa-lock"></span>
+              <input type="text" class="password" required placeholder="Enter Status of Item"
+              name= "itemstatus" [(ngModel)]="item.itemstatus" #itemstatus="ngModel">
+          </div>
+
+            <br>
+            <div class="field">
+                <input type="submit" value="Update Item">
+            </div>           
+        </form>
+    </div>
+  </div>

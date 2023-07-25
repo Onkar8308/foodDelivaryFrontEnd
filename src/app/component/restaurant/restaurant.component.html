@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let rest of restaurant" class="col-6 col-md-4 mt-4">
+            <div class="card">
+                <img class="card-img-top" src="{{rest.pic}}" alt="Card image cap" (click)="viewRestaurant(rest.addressid)">
+                <div class="card-body">
+                    <p class="card-text">{{rest.restname}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

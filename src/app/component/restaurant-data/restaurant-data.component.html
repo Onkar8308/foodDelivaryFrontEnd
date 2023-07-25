@@ -1,0 +1,37 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Restaurant Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Address</th>
+        <th scope="col">manger Name</th>
+        <th scope="col">contact Number</th>
+        <th scope="col">Action</th>
+        <th scope="col">Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rest of restaurants">
+        <td>{{rest.restname}}</td>
+        <td>
+            <!-- Use the img tag to display the image -->
+            <img [src]="rest.pic" alt="Image" height="100px" width="100px" />
+          </td>
+        <td>{{rest.area}} , {{rest.city}} ,{{rest.state}} 
+            <br>
+            {{rest.country}} , {{rest.pincode}}
+        </td>
+        <td>{{rest.managerName}}</td>
+        <td>{{rest.contactNumber}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="restupdate(rest.restid)">Update</button>
+          &nbsp;
+          <button class="btn btn-danger" (click)="restdelete(rest.restid)">Delete</button>
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="viewItems(rest.restid)">View</button>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>

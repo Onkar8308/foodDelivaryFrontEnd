@@ -1,0 +1,35 @@
+<div class="body">
+    
+    <table class="table table-borderless">
+        <thead>
+        <tr>
+            <th scope="col">add No</th>
+            <th scope="col">Area</th>
+            <th scope="col">City</th>
+            <th scope="col">country</th>
+            <th scope="col">state</th>
+            <th scope="col">pincode</th>
+            <th scope="col">action</th>
+            <th scope="col">action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customerAdd of customerAddress" class="bg-primary">
+            <th scope="row">{{customerAdd.addressid}}</th>
+            <td>{{customerAdd.area}}</td>
+            <td>{{customerAdd.city }}</td>
+            <td>{{customerAdd.country}}</td>
+            <td>{{customerAdd.state}}</td>
+            <td>{{customerAdd.pincode}}</td>
+            <td>
+              <button style="margin-right:20px ;" (click)="getSelectedADd(customerAdd.addressid)" class=" btn btn-outline-danger">use</button>
+            </td>
+            <!-- <td>
+              <button style="margin-right:20px ;" (click)="getSelectedADd(customerAdd.addressid)" class=" btn btn-outline-danger">delete </button>
+              </td>                -->
+            </tr>
+        </tbody>
+    </table>
+<hr>
+</div>

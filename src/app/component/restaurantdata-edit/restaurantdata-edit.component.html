@@ -1,0 +1,68 @@
+<div class="bg-img">
+    <div class="content" >
+        <form (ngSubmit)="updateRest()" #itemForm="ngForm" >
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter rest name"
+                name= "restname" [(ngModel)]="rest.restname" #restname="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter area"
+                name= "area" [(ngModel)]="rest.area" #area="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter city"
+                name= "city" [(ngModel)]="rest.city" #city="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter state"
+                name= "state" [(ngModel)]="rest.state" #state="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter country"
+                name= "country" [(ngModel)]="rest.country" #country="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter pincode"
+                name= "pincode" [(ngModel)]="rest.pincode" #pincode="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter Manager Name"
+                name= "managerName" [(ngModel)]="rest.managerName" #managerName="ngModel">
+            </div>
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="Enter contactNumber"
+                name= "contactNumber" [(ngModel)]="rest.contactNumber" #contactNumber="ngModel">
+            </div>
+            <br>
+            <!-- <div class="field space">
+                <label for="itemImage">Upload Item Image:</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="pic"
+                  name="pic"
+                  (change)="onImageChange($event)"
+                />
+              </div> -->
+              <!-- Add this image tag to show the preview of the selected image -->
+<!-- <div class="col-12">
+    <div class="d-flex flex-column">
+      <p class="text mb-1">Image Preview</p>
+      <img [src]="rest.pic" *ngIf="rest.pic" height="100px" width="100px" alt="Image Preview">
+    </div>
+  </div> -->
+  
+            <div class="field">
+                <input type="submit" value="Update restaurant">
+            </div>           
+        </form>
+    </div>
+  </div>

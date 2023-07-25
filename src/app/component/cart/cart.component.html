@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class=" container-fluid my-5 ">
+        <div class="row justify-content-center ">
+            <div class="col-xl-10">
+                <div class="card shadow-lg "
+                    style="background-image: url('https://img.freepik.com/free-vector/flat-design-street-food-market-illustration_23-2150517568.jpg?size=626&ext=jpg');">
+                    <div class="row p-2 mt-5 fs-3 justify-content-between mx-sm-2">
+                        <div class="col" style="font-size: large;">
+                            <p class="text-muted space mb-0  shop"> {{cartDetails.cust.customername}}</p>
+                            <p class="text-muted space mb-0 shop">{{cartDetails.cust.customermobilenumber}}</p>
+                        </div>
+                        <div class="col">
+                            <div class="row justify-content-start ">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row  mx-auto justify-content-center text-center">
+                        <div class="col-12 mt-3 ">
+                            <nav aria-label="breadcrumb" class="second ">
+                                <ol class="breadcrumb indigo lighten-6 first  ">
+                                    <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase "
+                                            href="/restaurant"><span class="mr-md-3 mr-1">BACK TO SHOP</span></a><i
+                                            class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                                    <li class="breadcrumb-item font-weight-bold"><a
+                                            class="black-text text-uppercase active-2" href="#"><span
+                                                class="mr-md-3 mr-1">SHOPPING BAG</span></a><i
+                                            class="fa fa-angle-double-right text-uppercase " aria-hidden="true"></i>
+                                    </li>
+                                    <!-- <li class="breadcrumb-item font-weight-bold"><a class="black-text text-uppercase " href="#"><span class="mr-md-3 mr-1">CHECKOUT</span></a></li> -->
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="row justify-content-around">
+                        <div class="col-md-5">
+                            <form [formGroup]="addressForm">
+                                <div class="card border-0">
+                                    <div class="card-header pb-0">
+                                        <h2 class="card-title space ">Checkout</h2>
+                                        <p class="card-text text-muted mt-4  space">SHIPPING DETAILS</p>
+                                        <hr class="my-0">
+                                    </div>
+                                    <div class="container p-0">
+                                        <div class="card px-4">
+                                            <p class="h8 py-3">Address </p>
+                                            <div class="row gx-3">
+                                                <div class="col-12">
+                                                    <div class="d-flex flex-column">
+                                                        <p class="text mb-1">Adress line 1</p>
+                                                        <input class="form-control mb-3" formControlName="area"
+                                                            type="text" placeholder="*Enter Area" value="">
+                                                        <span
+                                                            *ngIf="addressForm.get('area')?.errors?.required && addressForm.get('area')?.touched"
+                                                            style="color: red;">area is required</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="d-flex flex-column">
+                                                        <p class="text mb-1">City </p>
+                                                        <input class="form-control mb-3" formControlName="city"
+                                                            type="text" placeholder="*City">
+                                                        <span
+                                                            *ngIf="addressForm.get('city')?.errors?.required && addressForm.get('city')?.touched"
+                                                            style="color: red;">city is required</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="d-flex flex-column">
+                                                        <p class="text mb-1">state</p>
+                                                        <input class="form-control mb-3" formControlName="state"
+                                                            type="text" placeholder="*State">
+                                                        
+
+                                                        <span
+                                                            *ngIf="addressForm.get('state')?.errors?.required && addressForm.get('state')?.touched"
+                                                            style="color: red;">state is required</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="d-flex flex-column">
+                                                        <p class="text mb-1">country</p>
+                                                        <input class="form-control mb-3" formControlName="country"
+                                                            type="text" placeholder="*country">
+                                                        <span
+                                                            *ngIf="addressForm.get('country')?.errors?.required && addressForm.get('country')?.touched"
+                                                            style="color: red;">country is required</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="d-flex flex-column">
+                                                        <p class="text mb-1">pincode</p>
+                                                        <input class="form-control mb-3 pt-2 " formControlName="pincode"
+                                                            type="number" placeholder="*enter 6 digit pincode"
+                                                            pattern="^[0-9]\d{0,5}$" maxlength="10">
+                                                        <span
+                                                            *ngIf="addressForm.get('pincode')?.errors?.required && addressForm.get('pincode')?.touched "
+                                                            style="color: red;">
+                                                            Pincode is required.
+                                                        </span>
+                                                        <span *ngIf="addressForm.get('pincode')?.touched 
+                                                            && addressForm.get('pincode')?.invalid"
+                                                            style="color: red;">
+                                                            Pincode should be 6 digits And pincode should be number.
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button class="btn btn-primary mb-3"
+                                                        [disabled]="addressForm.invalid" (click)="saveAdd()">
+                                                        <span class="ps-3">Save new address</span>
+                                                        <span class="fas fa-arrow-right"></span>
+                                                    </button>
+                                                    <button class="btn btn-primary mb-3" (click)="showPreviusAdd()"
+                                                        style="margin-left: 10vh;">
+                                                        <span class="ps-3">use privious address</span>
+                                                        <span class="fas fa-arrow-right"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card border-0 ">
+                                <div class="card-header ">
+                                    <h2 class="card-title space">YOUR ORDER <span
+                                            class=" small text-muted ml-2 cursor-pointer">EDIT SHOPPING BAG</span> </h2>
+                                    <hr class="my-3">
+                                </div>
+                                <div class="card-body pt-0" *ngFor="let cart of item">
+                                    <div class="row  justify-content-between">
+                                        <div class="col-auto col-md-7">
+                                            <div class="media flex-column flex-sm-row">
+                                                <img class=" img-fluid" src="{{cart.itemimage}}" width="62" height="62">
+                                                <div class="media-body  my-auto">
+                                                    <div class="row ">
+                                                        <div class="col-auto">
+                                                            <p class="mb-0"><b>{{cart.itemname}}</b></p><small
+                                                                class="text-muted">{{cart.itemstatus}}</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class=" pl-0 flex-sm-col col-auto  my-auto">
+                                            <label for="cars">Quantity</label>
+
+                                            <select #quantity (change)="onSelected(quantity.value)" name="Quantity">
+                                                <option value=1  selected>1</option>
+                                                <option value=2>2</option>
+                                                <option value=3>3</option>
+                                                <option value=4>4</option>
+                                            </select>
+                                        </div> -->
+                                        <div class=" pl-0 flex-sm-col col-auto  my-auto ">
+                                            <p><b>{{cart.itemcost*quantityofItem}}</b></p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-2">
+                                </div>
+                                <div class="row ">
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4">
+                                                <p><b>Total</b></p>
+                                            </div>
+                                            <div class="flex-sm-col col-auto">
+                                                <p class="mb-1"><b>{{total*quantityofItem}}</b></p>
+                                            </div>
+                                        </div>
+                                        <hr class="my-0">
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="valid">
+                                    <div class="col-12">
+                                        <button class="btn btn-primary mb-3" (click)="payment(total)"
+                                            style="margin-left: 30vh;margin-top: 5vh;">
+                                            <span class="ps-3">Pay</span>
+                                            <span class="fas fa-arrow-right"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

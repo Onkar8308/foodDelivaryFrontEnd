@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="form-wrapper">
+ <form (ngSubmit)="loginValid()" #LoginForm="ngForm" novalidate>
+          <div class="form-group">
+              <label for="name">Admin Email:</label>
+              <input type="text" class="form-control" #adminloginemail="ngModel" [(ngModel)]="loginData.adminloginemail" minlength="5" maxlength="20"name="adminloginemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            
+          </div>
+          <div class="form-group">
+            <span class="text-danger" *ngIf="(adminloginemail.touched || LoginForm.submitted) && adminloginemail.errors?.['required']">
+            Email is required
+            </span>
+            <span class="text-danger" *ngIf="adminloginemail.touched && adminloginemail.errors?.['pattern']">
+            Enter a valid email address
+            </span>
+          </div>
+          <div class="form-group">
+              <label for="mobilenumber">Password:</label>
+              <input type="password" class="form-control" #adminloginpassword="ngModel"  minlength="5" maxlength="20"
+  
+              [(ngModel)]="loginData.adminloginpassword" name="adminloginpassword" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" required>
+              
+          </div>
+          <div class="form-group">
+            <span class="text-danger"
+  
+   *ngIf="(adminloginpassword.touched || LoginForm.submitted) && adminloginpassword.errors?.['required']">
+  
+   Password is required
+  
+   </span>
+
+
+   <span class="text-danger" *ngIf="adminloginpassword.touched && adminloginpassword.errors?.['pattern']">
+    Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+    letter, 1 number and 1 special character
+  </span>
+          </div>
+          <div class="form-group">
+            <button [disabled]="!LoginForm.valid" type="submit" class="btn btn-success">Login</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+
