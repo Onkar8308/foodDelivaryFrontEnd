@@ -10,7 +10,7 @@ export class CustomerAddresssService {
   baseUrl: string = "http://localhost:9999";
   constructor(private http: HttpClient) { }
 
-  public saveCustomerAdd(customerAddress: CustomerAddress) {
+  public saveCustomerAdd(customerAddress: any) {
     return this.http.post<CustomerAddress>(`${this.baseUrl}/saveCustomerAddress`, customerAddress);
   }
 
@@ -23,5 +23,7 @@ export class CustomerAddresssService {
     return this.http.get<CustomerAddress>(`${this.baseUrl}/getCustomerAddById/${id}`); 
   }
 
+  public deleteCustomerAdd(id:number){
+    return this.http.delete<CustomerAddress>(`${this.baseUrl}/deleteCustomerAddressById/${id}`);
+  }
 }
-

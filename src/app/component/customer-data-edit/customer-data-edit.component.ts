@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from 'src/app/class/customer';
 import { CustomerdataService } from 'src/app/service/customerdata.service';
+import { HardcodedAuthenticationService } from 'src/app/service/hardcoded-authentication.service';
 
 @Component({
   selector: 'app-customer-data-edit',
@@ -11,11 +12,12 @@ import { CustomerdataService } from 'src/app/service/customerdata.service';
 export class CustomerDataEditComponent implements OnInit {
 
   id:number;
-
+  customerupdate:any;
   customer:Customer
 
   constructor(
     private route: ActivatedRoute,
+    public hardcodedAuthentication:HardcodedAuthenticationService,
     private customerservice: CustomerdataService,
     private router:Router){};
 
@@ -36,7 +38,15 @@ export class CustomerDataEditComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this.customerservice.updateCustomerById(this.id,this.customer).subscribe(
-      data=> this.router.navigate(['customeradmin'])
-    )
+      data=> {
+        this.customerupdate=data;
+      })
+      if(this.hardcodedAuthentication.isUserLoggedIn()){
+        this.router.navigate(['home']);
+      }
+      if(this.hardcodedAuthentication.isAdminLoggedIn()){
+        
+        this.router.navigate(['customeradmin']);
+      }
   }
 }

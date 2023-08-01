@@ -9,6 +9,8 @@ import { CustomerdataService } from 'src/app/service/customerdata.service';
   styleUrls: ['./customer-data.component.css']
 })
 export class CustomerDataComponent {
+  p: number = 1;
+  count: number = 4;
   customer:Customer[]=[];
  
   // id:number;

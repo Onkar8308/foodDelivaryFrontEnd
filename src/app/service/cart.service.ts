@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Cart } from '../class/cart';
 import { Customer } from '../class/customer';
 
@@ -9,7 +8,6 @@ import { Customer } from '../class/customer';
 })
 export class CartService {
 
- 
   baseUrl:string="http://localhost:9999";
   constructor(private http:HttpClient) { }
 

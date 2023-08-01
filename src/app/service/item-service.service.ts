@@ -21,7 +21,7 @@ export class ItemServiceService {
   }
 
   saveItemByRestId(id:number, item:any){
-    return this.http.post(`http://localhost:9999/saveItemByRestId/${id}`,item);
+    return this.http.post(`http://localhost:9999/saveItemByRestIdi/${id}`,item);
   }
 
   updateItemById(id:number,item:Item){
@@ -34,10 +34,5 @@ export class ItemServiceService {
 
   getItemById(id:number){
     return this.http.get<Item>(`http://localhost:9999/getItemById/${id}`);
-  }
-
-    assignItemToCart(itemId:number,cartId:number){
-    return this.http.get<Item[]>(`http://localhost:9999/assignItemToCart/${itemId}/${cartId}`);
-
   }
 }

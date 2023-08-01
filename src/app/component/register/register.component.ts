@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   cartId:number;
   cart1 = { };
+
   // cust:Customer=new Customer(this.customername,0,'','');
   customername:string="";
   customermobilenumber:string='';
@@ -24,11 +25,7 @@ export class RegisterComponent implements OnInit {
   //cust:Customer;
   cust:Customer=new Customer(this.customername,this.customermobilenumber,this.customeremail,this.password);
 
-  constructor(public dialog: MatDialogRef<RegisterComponent>,
-    private loginservice:LoginService
-    ,private route:ActivatedRoute
-    , private router:Router
-    ,private cart:CartService){}
+  constructor(public dialog: MatDialogRef<RegisterComponent>,private loginservice:LoginService,private route:ActivatedRoute, private router:Router,private cart:CartService){}
   ngOnInit(): void {
     this.customername=this.route.snapshot.params['customername']; //to take url id 
     
@@ -43,6 +40,7 @@ export class RegisterComponent implements OnInit {
         this.cust=customer;
         console.log(customer);
         this.successmessage="Registration Successful! Please Login";
+        alert("registration Successfull")
         this.dialog.close();
 
         console.log(this.cust);
@@ -67,6 +65,8 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+
+
 
 
 

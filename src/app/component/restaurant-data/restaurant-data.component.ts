@@ -9,6 +9,8 @@ import { DataRestaurantService } from 'src/app/service/data-restaurant.service';
   styleUrls: ['./restaurant-data.component.css']
 })
 export class RestaurantDataComponent {
+  p: number = 1;
+  count: number = 4;
   id:number;
   restaurants:Restaurant[]=[];
 

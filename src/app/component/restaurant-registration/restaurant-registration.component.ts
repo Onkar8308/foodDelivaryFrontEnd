@@ -26,7 +26,8 @@ export class RestaurantRegistrationComponent implements OnInit {
     managerName: new FormControl('', [Validators.required, Validators.maxLength(20), Validators.pattern('[a-zA-Z][a-zA-Z ]+$')]),
     contactNumber: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern('^[6-9][0-9]{9}$')]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")])
+    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}")]),
+    pic: new FormControl('', [Validators.required])
   })
 
   ngOnInit(): void {}
@@ -43,15 +44,18 @@ export class RestaurantRegistrationComponent implements OnInit {
       managerName: this.registrationForm.value.managerName,
       contactNumber: this.registrationForm.value.contactNumber,
       email: this.registrationForm.value.email,
-      password: this.registrationForm.value.password
+      password: this.registrationForm.value.password,
+      pic:this.registrationForm.value.pic
     };
 
     this.data.addRestaurant(restaurant).subscribe(
       (response: any) => {
         console.log(response);
+        alert("Registration Successful!");
         this.router.navigate(['RestaurantSignup']);
       },
       (error: any) => {
+        alert("Registration failed!!Please Try Again Later.")
         console.log(error);
       }
     );

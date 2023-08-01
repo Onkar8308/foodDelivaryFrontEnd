@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
@@ -8,9 +8,7 @@ import { CartService } from 'src/app/service/cart.service';
   templateUrl: './payment-success.component.html',
   styleUrls: ['./payment-success.component.css']
 })
-export class PaymentSuccessComponent implements OnInit {
-
-
+export class PaymentSuccessComponent {
   newCart={}
   constructor(private router:Router,
     private ref:MatDialogRef<PaymentSuccessComponent>,

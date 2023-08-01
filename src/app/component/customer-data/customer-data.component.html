@@ -1,6 +1,8 @@
+<app-menu></app-menu>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th scope="col">Custom Id</th>
       <th scope="col">Custom Name</th>
       <th scope="col">Customer Email</th>
       <th scope="col">Customer Number</th>
@@ -8,16 +10,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cus of customer">
+    <tr *ngFor="let cus of customer | paginate: { itemsPerPage: count, currentPage: p }">
+      <td>{{cus.customerid}}</td>
       <td>{{cus.customername}}</td>
       <td>{{cus.customeremail}}</td>
       <td>{{cus.customermobilenumber}}</td>
       <td>
         <button class="btn btn-primary" (click)="customerUpdate(cus.customerid)">Update</button>
         &nbsp;
-        <button class="btn btn-danger" (click)="customerDelete(cus.customerid)">Delete</button>
+        <!-- <button class="btn btn-danger" (click)="customerDelete(cus.customerid)">Delete</button> -->
       </td>
     </tr>
 
   </tbody>
 </table>
+<br>
+<div class="text-right">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

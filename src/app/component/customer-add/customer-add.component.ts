@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Cart } from 'src/app/class/cart';
 import { CustomerAddress } from 'src/app/class/customer-address';
 import { CustomerAddresssService } from 'src/app/service/customer-addresss.service';
 import { CustomerService } from 'src/app/service/customer.service';
@@ -10,13 +12,15 @@ import { CustomerService } from 'src/app/service/customer.service';
   styleUrls: ['./customer-add.component.css']
 })
 export class CustomerAddComponent implements OnInit {
-
+  add:string="this is add";
   email:any;
+  addId:number;
   public customerAddress:any;
   selectedAdd:CustomerAddress;
   constructor(private customerService:CustomerService,
     private customerAddService:CustomerAddresssService,
-    private matDialogref:MatDialogRef<CustomerAddComponent>) { }
+    private matDialogref:MatDialogRef<CustomerAddComponent>,
+    private router:Router) { }
 
   ngOnInit(): void {
 
@@ -31,6 +35,7 @@ export class CustomerAddComponent implements OnInit {
   }
 
   getSelectedADd(id:number){
+    this.addId=id;
      this.customerAddService.getCustomerAddById(id).subscribe(data=>{
         console.log(data);
         this.selectedAdd=data;
@@ -43,12 +48,21 @@ export class CustomerAddComponent implements OnInit {
       country = ${this.selectedAdd.country}
       pincode = ${this.selectedAdd.pincode}`
       
-    );
+      );
+            this.matDialogref.close()
+  }
 
-      this.matDialogref.close()
-  
+  deleteCustomerAdd(id:number){
+    this.customerAddService.deleteCustomerAdd(id).subscribe(msg=>{
+      console.log(msg);
+    })
+    alert("Address deleted successfully");
+    this.matDialogref.close();
+  }
+
+  navigateWithAdd(id:number){
+    this.router.navigate(['cart',id]);
 
   }
 
 }
-

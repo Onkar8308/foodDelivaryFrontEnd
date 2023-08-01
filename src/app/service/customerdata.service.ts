@@ -27,9 +27,4 @@ export class CustomerdataService {
     return this.http.put<Customer>
       (`http://localhost:9999/updateCustomerById/${id}`,customer)
   }
-
-
-  getCustomerByEmail(email:string){
-    return this.http.get<Customer>(`//localhost:9999/getCustomerByEmail1/${email}`);
-  }
 }

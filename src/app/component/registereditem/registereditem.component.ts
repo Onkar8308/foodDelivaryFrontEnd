@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from 'src/app/class/item';
 import { ItemServiceService } from 'src/app/service/item-service.service';
@@ -18,9 +18,10 @@ export class RegistereditemComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private data:ItemServiceService){};
 
   registrationForm = new FormGroup({
-    itemname : new FormControl(''),
-    itemstatus : new FormControl(''),
-    itemcost : new FormControl('')
+    itemname : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+$')]),
+    itemstatus : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+$')]),
+    itemcost : new FormControl('', [Validators.required]),
+    itemimage : new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -44,7 +45,8 @@ export class RegistereditemComponent implements OnInit {
     const Items = {
       itemname : this.registrationForm.value.itemname,
       itemstatus : this.registrationForm.value.itemstatus,
-      itemcost : this.registrationForm.value.itemcost
+      itemcost : this.registrationForm.value.itemcost,
+      itemimage : this.registrationForm.value.itemimage,
     };
 
     this.data.saveItemByRestId(this.id,Items).subscribe(
@@ -67,5 +69,16 @@ export class RegistereditemComponent implements OnInit {
     //     }
     //   )
   }
+  get itemname() {
+    return this.registrationForm.get('itemname');
+  }
+  get itemstatus() {
+    return this.registrationForm.get('itemstatus');
+  }
+  get itemcost() {
+    return this.registrationForm.get('itemcost');
+  }
+  get itemimage() {
+    return this.registrationForm.get('itemimage');
+  }
 }
-

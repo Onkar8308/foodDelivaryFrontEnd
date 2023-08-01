@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+<app-menu></app-menu>
     <div class=" container-fluid my-5 ">
         <div class="row justify-content-center ">
             <div class="col-xl-10">
@@ -53,7 +43,6 @@
                                     </div>
                                     <div class="container p-0">
                                         <div class="card px-4">
-                                            <p class="h8 py-3">Address </p>
                                             <div class="row gx-3">
                                                 <div class="col-12">
                                                     <div class="d-flex flex-column">
@@ -141,7 +130,7 @@
                                             class=" small text-muted ml-2 cursor-pointer">EDIT SHOPPING BAG</span> </h2>
                                     <hr class="my-3">
                                 </div>
-                                <div class="card-body pt-0" *ngFor="let cart of item">
+                                <div class="card-body pt-0" *ngFor="let cart of item  | paginate: { itemsPerPage: count, currentPage: p }">
                                     <div class="row  justify-content-between">
                                         <div class="col-auto col-md-7">
                                             <div class="media flex-column flex-sm-row">
@@ -157,22 +146,31 @@
                                             </div>
                                         </div>
                                         <!-- <div class=" pl-0 flex-sm-col col-auto  my-auto">
-                                            <label for="cars">Quantity</label>
-
-                                            <select #quantity (change)="onSelected(quantity.value)" name="Quantity">
+                                            <label for="quantity">Quantity</label>
+                                            <select #quantity (change)="onSelected(quantity.value,cart.itemid)" name="Quantity">
                                                 <option value=1  selected>1</option>
                                                 <option value=2>2</option>
                                                 <option value=3>3</option>
                                                 <option value=4>4</option>
                                             </select>
+                                            <div class=" pl-0 flex-sm-col col-auto  my-auto " *ngIf=" valueOfItemInInt>1" >
+                                                <p><b>{{itemCost}}</b></p>
+                                            </div>
                                         </div> -->
-                                        <div class=" pl-0 flex-sm-col col-auto  my-auto ">
+                                        <div class=" pl-0 flex-sm-col col-auto  my-auto " >
                                             <p><b>{{cart.itemcost*quantityofItem}}</b></p>
                                         </div>
+                                        
+                                        
                                     </div>
 
                                     <hr class="my-2">
+                                    
+                                </div>  
+                                <div class="text-right">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
                                 </div>
+
                                 <div class="row ">
                                     <div class="col">
                                         <div class="row justify-content-between">
@@ -190,7 +188,7 @@
                                     <div class="col-12">
                                         <button class="btn btn-primary mb-3" (click)="payment(total)"
                                             style="margin-left: 30vh;margin-top: 5vh;">
-                                            <span class="ps-3">Pay</span>
+                                            <span class="ps-3">Pay  &#x20B9;{{total*quantityofItem}}</span>
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
                                     </div>
@@ -202,6 +200,3 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>

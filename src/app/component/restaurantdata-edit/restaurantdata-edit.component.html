@@ -41,7 +41,11 @@
                 <input type="text" required placeholder="Enter contactNumber"
                 name= "contactNumber" [(ngModel)]="rest.contactNumber" #contactNumber="ngModel">
             </div>
-            <br>
+            <div class="field" *ngIf="isrestLogIn">
+                <span class="fa fa-user"></span>
+                <input type="text" required placeholder="approval"
+                name= "status" [(ngModel)]="rest.status" #status="ngModel">
+            </div>
             <!-- <div class="field space">
                 <label for="itemImage">Upload Item Image:</label>
                 <input

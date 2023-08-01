@@ -9,6 +9,8 @@ export class Restaurant {
         public pic:string,
         public pincode:number,
         public restname:string, 
-        public state:string
-    ){}
+        public state:string,
+        public status:boolean
+    ){
+    }
 }

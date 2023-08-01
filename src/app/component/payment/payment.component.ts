@@ -1,7 +1,6 @@
-import { InjectFlags } from '@angular/compiler/src/core';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DummyPayment } from 'src/app/class/dummy-payment';
 import { CartService } from 'src/app/service/cart.service';
@@ -13,21 +12,25 @@ import { PaymentSuccessComponent } from '../payment-success/payment-success.comp
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit{
+
   email: any;
   cartID:number;
   cartDetails={};
+  newCart={};
   customerId:number;
-  totalAmountToPay:number;
+  totalAmountToPay:any;
   
   constructor(private router:Router,
     private dialog:MatDialog,
     private ref:MatDialogRef<PaymentComponent>,
     private cartService:CartService ,
     @Inject(MAT_DIALOG_DATA) public data:any)
-    { }
+    { 
+      this.totalAmountToPay=data
+    }
 
   ngOnInit(
-    totalAmountToPay=this.data
+  
   ): void {
      
     
@@ -50,7 +53,7 @@ export class PaymentComponent implements OnInit{
       this.cardDatils.get('personName')?.value == DummyPayment.personName &&
       this.cardDatils.get('cardNum')?.value == DummyPayment.cardNum &&
       this.cardDatils.get('expiryDate')?.value == DummyPayment.expiryDate &&
-      this.cardDatils.get('cvv')?.value ==DummyPayment.cvv
+      this.cardDatils.get('cvv')?.value == DummyPayment.cvv
     ){
        
     this.email = sessionStorage.getItem('authenticateduser');
@@ -71,6 +74,10 @@ export class PaymentComponent implements OnInit{
         this.cartService.updateStatus(this.cartID).subscribe(cart=>{
           console.log(cart);
          
+        })
+
+        this.cartService.saveCart(this.newCart).subscribe(newCarDetails=>{
+          console.log(newCarDetails);
         })
     
       });
@@ -99,4 +106,3 @@ export class PaymentComponent implements OnInit{
     
   }
 }
-

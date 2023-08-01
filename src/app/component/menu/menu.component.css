@@ -11,7 +11,7 @@
 }
 
 .container1{
-    background-image: url("Home.jpg");
+    background-image: url("/Home.jpg");
     width: 100%;
     min-height: 500px;
     text-align: center;
@@ -38,3 +38,8 @@
     padding-top: 10px;
     text-align: center;
 }
+mat-form-field{
+    /* background-color:; */
+    color: white;
+}
+

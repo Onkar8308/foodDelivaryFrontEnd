@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -6,12 +7,13 @@
         <th scope="col">Address</th>
         <th scope="col">manger Name</th>
         <th scope="col">contact Number</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
         <th scope="col">Items</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let rest of restaurants">
+      <tr *ngFor="let rest of restaurants | paginate: { itemsPerPage: count, currentPage: p }">
         <td>{{rest.restname}}</td>
         <td>
             <!-- Use the img tag to display the image -->
@@ -23,6 +25,15 @@
         </td>
         <td>{{rest.managerName}}</td>
         <td>{{rest.contactNumber}}</td>
+        <td  *ngIf="rest.status ; else notDone">Approved
+
+        </td>
+         <ng-template #notDone>
+        <td>
+          not Approved
+
+        </td>
+        </ng-template>
         <td>
           <button class="btn btn-primary" (click)="restupdate(rest.restid)">Update</button>
           &nbsp;
@@ -35,3 +46,7 @@
   
     </tbody>
   </table>
+  <br>
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

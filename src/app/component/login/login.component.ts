@@ -6,7 +6,6 @@ import { LoginService } from 'src/app/service/login.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AdminLoginService } from 'src/app/service/admin-login.service';
 import { Admin } from 'src/app/class/admin';
-import { CartService } from 'src/app/service/cart.service';
 
 
 @Component({
@@ -28,29 +27,25 @@ export class LoginComponent{
 
    roles : string[];
    role: string;
-   cart1 = { };
-   cartId:number;
+
    
    
-    constructor(public dialog: MatDialogRef<LoginComponent>,
-      private cart:CartService,
-      private hardcodedAuthentication:HardcodedAuthenticationService,
-      private loginservice: LoginService, 
-      private router: Router,
-      private activatedRoute:ActivatedRoute,
-      private adminloginservice: AdminLoginService) {
+   
+    constructor(public dialog: MatDialogRef<LoginComponent>,private hardcodedAuthentication:HardcodedAuthenticationService,private loginservice: LoginService, private router: Router,private adminloginservice: AdminLoginService) {
       this.roles = [
         'Admin','User'
       ];
      }
    
    
+     ClosePopup(){
+      this.dialog.close();
+    }
+    
    
    
     loginValid() {
-
-
-     
+   
       // this.cust.role = this.role;
       console.log("Inside login");
    
@@ -68,6 +63,8 @@ export class LoginComponent{
    
       this.hardcodedAuthentication.authenticate(this.loginData.restloginemail,this.loginData.restloginpassword);
 
+      alert("Login Successful");
+
       console.log("Login successful");
  
       this.dialog.close();
@@ -78,6 +75,8 @@ export class LoginComponent{
    
     } else {
    
+      alert("Login failed");
+
     console.log("Login failed");
    
     // Handle login failure, show error message, etc.
@@ -107,6 +106,7 @@ export class LoginComponent{
       (data: Admin) => {
       if (data) {
         this.hardcodedAuthentication.authenticateAdmin(this.loginData.restloginemail, this.loginData.restloginpassword);
+        alert("Login Successful!")
         console.log("Login successful");
       //sessionStorage.setItem("authenticatedAdmin",this.loginData.restloginemail);
         console.log(data.username);
@@ -117,8 +117,9 @@ export class LoginComponent{
    
     } else {
    
+      alert("Login failed");
     console.log("Login failed");
-   alert("invalid credentials")
+   
     // Handle login failure, show error message, etc.
    
     }

@@ -28,9 +28,11 @@ export class RestaurantSignupComponent {
         (data: RestaurantRegistration) => {
           if (data) {
             this.hardcodedAuth.authenticateRest(this.loginData.restloginemail,this.loginData.restloginpassword);
+            alert("Login Successful!")
             // Redirect to AddRestaurant page or any other page you want
             this.router.navigate(['item',data.restid]);
           } else {
+            alert("Login failed")
             console.log("Login failed");
             // Handle login failure, show error message, etc.
           }

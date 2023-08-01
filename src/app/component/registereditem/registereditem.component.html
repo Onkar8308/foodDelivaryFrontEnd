@@ -1,64 +1,38 @@
-<!-- <div class="d-flex justify-content-center">
-    <form [formGroup]="registrationForm" (ngSubmit)="saveItem()">
-      <br>
-      <h2><b>Adding Item</b></h2>
-  
-      Restaurant Details
-      <br><br>
-      <h3>Item Details</h3>
-      <div class="mb-3">
-        <label for="itemname" class="form-label">Item Name</label>
-        <input required minlength="3" maxlength="20" type="text" class="form-control" id="itemname"
-          placeholder="Enter Item name" formControlName="itemname" name="itemname">
-      </div>
-      <div class="mb-3">
-        <label for="itemstatus" class="form-label">Status</label>
-        <input required minlength="3" maxlength="20" type="text" class="form-control" id="itemstatus"
-          placeholder="Item status" formControlName="itemstatus" name="itemstatus">
-      </div>
-      <div class="mb-3">
-        <label for="itemcost" class="form-label">Item cost</label>
-        <input required minlength="3" maxlength="20" type="text" class="form-control" id="itemcost"
-          placeholder="Enter your Item cost"formControlName="itemcost" name="itemcost">
-      </div>
-  
-       Submit Button 
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Submit</button>
-      </div>
-    </form>
-  </div> -->
-
-
-
-  <div class="bg-img">
-    <div class="content">
-        <header>Login Form</header>
-        <form [formGroup]="registrationForm" (ngSubmit)="saveItem()">
-            <div class="field">
-              <span class="fa fa-user"></span>
-              <input required minlength="3" type="text" id="itemname"
-                placeholder="Enter Item name" formControlName="itemname" name="itemname">
-            </div>
-            <div class="field space">
-              <span class="fa fa-lock"></span>
-              <input required minlength="3" maxlength="20" type="text" id="itemcost"
-              required placeholder="Enter your Item Cost" formControlName="itemcost" name="itemcost">
-            </div>
-
-            <div class="field space">
-              <span class="fa fa-lock"></span>
-              <input required minlength="3" maxlength="20" type="text" id="itemstatus"
-                require placeholder="Enter Status" formControlName="itemstatus" name="itemstatus">
-            </div>
-
-            <br>
-            <div class="field">
-                <input type="submit" value="Save Item" (click)="saveItem">
-            </div>   
-            <!-- <div class="field">
-              <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Submit</button>
-            </div>       -->
-        </form>
-    </div>
+<div class="bg-img">
+  <div class="content">
+      <header>Add Item</header>
+      <form [formGroup]="registrationForm" (ngSubmit)="saveItem()">
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input required minlength="3" type="text" id="itemname"
+              placeholder="Enter Item name" formControlName="itemname" name="itemname">
+          </div>
+          <span style="color: red;" *ngIf="itemname?.invalid && itemname?.touched">This field is required</span>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+            <input required minlength="3" maxlength="20" type="number" id="itemcost"
+            required placeholder="Enter your Item Cost" formControlName="itemcost" name="itemcost">
+          </div>
+          <span style="color: red;" *ngIf="itemcost?.invalid && itemcost?.touched">This field is required</span>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+            <input required minlength="3" maxlength="20" type="text" id="itemstatus"
+              require placeholder="Enter Status" formControlName="itemstatus" name="itemstatus">
+          </div>
+          <span style="color: red;" *ngIf="itemstatus?.invalid && itemstatus?.touched">This field is required</span>
+          <div class="field space">
+            <span class="fa fa-lock"></span>
+            <input required minlength="3" type="text" id="itemimage"
+              require placeholder="Enter Image url" formControlName="itemimage" name="itemimage">
+          </div>
+          <span style="color: red;" *ngIf="itemimage?.invalid && itemimage?.touched">This field is required</span>
+          <br>
+          <div class="field">
+              <input type="submit" value="Save Item" (click)="saveItem">
+          </div>   
+          <!-- <div class="field">
+            <button type="submit" class="btn btn-primary" [disabled]="!registrationForm.valid">Submit</button>
+          </div>       -->
+      </form>
+  </div>
 </div>

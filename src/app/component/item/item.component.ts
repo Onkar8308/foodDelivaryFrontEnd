@@ -5,9 +5,6 @@ import { ItemServiceService } from 'src/app/service/item-service.service';
 import { Restaurant } from '../restaurants/restaurants.component';
 import { HardcodedAuthenticationService } from 'src/app/service/hardcoded-authentication.service';
 import { CartService } from 'src/app/service/cart.service';
-import { Cart } from 'src/app/class/cart';
-import { Customer } from '../register/register.component';
-import { CustomerdataService } from 'src/app/service/customerdata.service';
 import { ItemService } from 'src/app/service/item.service';
 
 
@@ -18,27 +15,28 @@ import { ItemService } from 'src/app/service/item.service';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
+  p: number = 1;
+  count: number = 6;
   id:number;
+
+  items : Item[] = [];
   cartID:number;
   cartItem:Item
-  items : Item[] = [];
   email:any;
-   
-  restaurant : Restaurant;
-  
-  customer= {};
- 
 
-  constructor(public hardcodedAuthentication:HardcodedAuthenticationService,
-    private itemservice: ItemServiceService,
-    private router:Router,
-    private route:ActivatedRoute,
+
+  restaurant : Restaurant;
+
+  constructor(public hardcodedAuthentication:HardcodedAuthenticationService,private itemservice: ItemServiceService,private router:Router,private route:ActivatedRoute,
     private  cart:CartService,
-    private item:ItemService){};
+    private item:ItemService){
+    console.log('Application loaded. Initializing data.');
+  };
 
 
   ngOnInit(): void {
-    this.email=  sessionStorage.getItem('authenticateduser');
+    
+      this.email=  sessionStorage.getItem('authenticateduser');
     console.log(this.email);
     
     this.cart.getCartByEmail(this.email).subscribe(cartData=>{
@@ -57,14 +55,12 @@ export class ItemComponent implements OnInit {
        )
   }
 
-
+  
 
   addToCart(id:number): void {
-    // this.itemservice.saveItemByRestId(this.id,this.cartItem).subscribe(restaurant=>{
-    //   console.log(restaurant);
-    // })  
+    
     this.itemservice.getItemById(id).subscribe(data=>{
-      console.log(data)
+      console.log(data);
       this.cartItem=data;  
       
       //geting item details
@@ -78,13 +74,8 @@ export class ItemComponent implements OnInit {
           console.log(updatedres);
         })
     })
-
-
-
     
     })
-
-
   }
 
   updateItem(id:number): void {
@@ -99,6 +90,7 @@ export class ItemComponent implements OnInit {
       respose=>{
         this.items=respose;
         console.log(this.items);
+        // this.router.navigate(['item',this.id]);
       } 
     );
   }

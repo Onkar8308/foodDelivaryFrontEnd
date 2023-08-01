@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Item } from '../class/item';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,4 @@ export class ItemService {
   assignItemToRestById(restId:number,itemId:number){
     return this.http.get<Item[]>(`http://localhost:9999/itemAssignedRestaurant/item/${itemId}/restaurant/${restId}`);
   }
-
-
-  
 }

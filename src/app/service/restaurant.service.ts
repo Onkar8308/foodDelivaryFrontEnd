@@ -14,4 +14,9 @@ export class RestaurantService {
   updaterestById(id:number,rest:Restaurant){
     return this.http.put<Restaurant>(`http://localhost:9999/updateRestaurantById/${id}`,rest);
   }
+
+ 
+  // public getAllRestaurant(searchkeyword:string=""){
+  //   return this.http.get<Restaurant[]>(`http://localhost:9999/getAllRestaurantsearch?searchkey=`+searchkeyword);
+  // }
 }

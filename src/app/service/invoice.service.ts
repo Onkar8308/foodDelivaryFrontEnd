@@ -7,7 +7,7 @@ import { Invoice } from '../class/invoice';
 })
 export class InvoiceService {
 
-  baseUrl:string="http://localhost:9999";
+  baseUrl:string="http://localhost:8990";
   constructor(private http:HttpClient) { }
 
   getAllInvoice(){
