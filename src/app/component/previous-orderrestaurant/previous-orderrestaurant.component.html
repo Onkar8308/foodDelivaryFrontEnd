@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+       
+         <th scope="col">Customer Name</th>
+         <th scope="col">Order Date</th>
+         <th scope="col">Mobile Number</th>
+         <th scope="col">Email</th>
+        <!-- <th scope="col">status</th> -->
+        <th scope="col">Item Name</th>
+        <th scope="col">Item price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders ">
+        <td>{{order.cus.customername}}</td>
+        <td>{{order.orderDate}}</td>
+        <td>{{order.cus.customermobilenumber}}</td>
+        <td>{{order.cus.customeremail}}</td>
+        <td>{{order.item.itemname}}</td>
+        <td>{{order.item.itemcost}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  

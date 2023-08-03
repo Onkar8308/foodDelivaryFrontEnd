@@ -47,4 +47,8 @@ return this.http.delete<Cart>(`${this.baseUrl}/deleteItemInCartById/${id}`);
   public updateStatus(id:number){
   return this.http.get<Cart>(`${this.baseUrl}/updatePaymentStatus/${id}`);
   }
+
+  public getCartByStatusPaid(id:number){
+    return this.http.get<Cart>(`${this.baseUrl}/viewOrdersByRestaurant/${id}`);
+  }
 }

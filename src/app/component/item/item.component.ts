@@ -6,6 +6,9 @@ import { Restaurant } from '../restaurants/restaurants.component';
 import { HardcodedAuthenticationService } from 'src/app/service/hardcoded-authentication.service';
 import { CartService } from 'src/app/service/cart.service';
 import { ItemService } from 'src/app/service/item.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PreviousOrderrestaurantComponent } from '../previous-orderrestaurant/previous-orderrestaurant.component';
+import { OrderService } from 'src/app/service/order.service';
 
 
 
@@ -23,13 +26,18 @@ export class ItemComponent implements OnInit {
   cartID:number;
   cartItem:Item
   email:any;
-
+customerid:number;
 
   restaurant : Restaurant;
 
-  constructor(public hardcodedAuthentication:HardcodedAuthenticationService,private itemservice: ItemServiceService,private router:Router,private route:ActivatedRoute,
+  constructor(public hardcodedAuthentication:HardcodedAuthenticationService,
+    private itemservice: ItemServiceService,
+    private router:Router,
+    private route:ActivatedRoute,
     private  cart:CartService,
-    private item:ItemService){
+    private item:ItemService,
+    private matDialog: MatDialog,
+    private orderService:OrderService) {
     console.log('Application loaded. Initializing data.');
   };
 
@@ -41,6 +49,7 @@ export class ItemComponent implements OnInit {
     
     this.cart.getCartByEmail(this.email).subscribe(cartData=>{
       this.cartID = cartData.id;
+      this.customerid=cartData.cust.customerid;
       console.log(this.cartID);
       console.log(cartData);
     });
@@ -65,7 +74,10 @@ export class ItemComponent implements OnInit {
       
       //geting item details
       
-      
+      this.orderService.saveOrder(this.customerid,data.rest.restid,data.itemid,this.cartID).subscribe(order=>{
+        console.log(order);
+      })
+
       this.cart.addItemToCart(this.cartID,data).subscribe(data1=>{   //asiging item to cartt
         console.log(data1);
         alert("item Added to your cart successfully");  
@@ -98,5 +110,14 @@ export class ItemComponent implements OnInit {
   addItem(): void {
     this.id = this.route.snapshot.params['id'];
     this.router.navigate(['registerItem',this.id]);
+  }
+
+  viewOoders(){
+    this.id = this.route.snapshot.params['id'];
+    this.matDialog.open(PreviousOrderrestaurantComponent,{
+      width:'120vh',
+      height:'90vh',
+      data:this.id
+    })
   }
 }

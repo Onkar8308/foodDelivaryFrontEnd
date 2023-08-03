@@ -10,8 +10,8 @@
                             <p class="text-muted space mb-0 shop">{{cartDetails.cust.customermobilenumber}}</p>
                         </div>
                         <div class="col">
-                            <div class="row justify-content-start ">
-
+                            <div class="row justify-content-right " style="margin-left:60vh ;">
+                                <button class="btn btn-primary"(click)="viewPreviousOrders()">View Previous Orders</button>
                             </div>
                         </div>
                     </div>
@@ -32,17 +32,17 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="row justify-content-around">
-                        <div class="col-md-5">
-                            <form [formGroup]="addressForm">
-                                <div class="card border-0">
-                                    <div class="card-header pb-0">
+                    <div class="row justify-content-around" >
+                        <div class="col-md-5" >
+                            <form [formGroup]="addressForm" >
+                                <div class="card border-0" >
+                                    <div class="card-header pb-0" >
                                         <h2 class="card-title space ">Checkout</h2>
                                         <p class="card-text text-muted mt-4  space">SHIPPING DETAILS</p>
                                         <hr class="my-0">
                                     </div>
-                                    <div class="container p-0">
-                                        <div class="card px-4">
+                                    <div class="container p-0" >
+                                        <div class="card px-4" style="background-color: aqua; "> 
                                             <div class="row gx-3">
                                                 <div class="col-12">
                                                     <div class="d-flex flex-column">
@@ -123,42 +123,38 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-5" >
                             <div class="card border-0 ">
                                 <div class="card-header ">
                                     <h2 class="card-title space">YOUR ORDER <span
                                             class=" small text-muted ml-2 cursor-pointer">EDIT SHOPPING BAG</span> </h2>
                                     <hr class="my-3">
                                 </div>
-                                <div class="card-body pt-0" *ngFor="let cart of item  | paginate: { itemsPerPage: count, currentPage: p }">
+                                <div class="card-body pt-0" style="background-color:bisque;" *ngFor="let ord of orders  | paginate: { itemsPerPage: count, currentPage: p }">
                                     <div class="row  justify-content-between">
                                         <div class="col-auto col-md-7">
                                             <div class="media flex-column flex-sm-row">
-                                                <img class=" img-fluid" src="{{cart.itemimage}}" width="62" height="62">
+                                                <img class=" img-fluid" src="{{ord.item.itemimage}}" width="62" height="62">
                                                 <div class="media-body  my-auto">
                                                     <div class="row ">
                                                         <div class="col-auto">
-                                                            <p class="mb-0"><b>{{cart.itemname}}</b></p><small
-                                                                class="text-muted">{{cart.itemstatus}}</small>
+                                                            <p class="mb-0"><b>{{ord.item.itemname}}</b></p><small
+                                                                class="text-muted">{{ord.item.itemstatus}}</small>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class=" pl-0 flex-sm-col col-auto  my-auto">
-                                            <label for="quantity">Quantity</label>
-                                            <select #quantity (change)="onSelected(quantity.value,cart.itemid)" name="Quantity">
-                                                <option value=1  selected>1</option>
-                                                <option value=2>2</option>
-                                                <option value=3>3</option>
-                                                <option value=4>4</option>
-                                            </select>
-                                            <div class=" pl-0 flex-sm-col col-auto  my-auto " *ngIf=" valueOfItemInInt>1" >
-                                                <p><b>{{itemCost}}</b></p>
-                                            </div>
-                                        </div> -->
+                                         <div class=" pl-0 flex-sm-col col-auto  my-auto">
+                                           
+                                            <button (click)="decrease(ord.item.itemid,ord.item.itemcost)">-</button>{{initialQUuantity}}<button (click)="increase(ord.item.itemid,ord.item.itemcost)">+</button>
+                                        </div> 
                                         <div class=" pl-0 flex-sm-col col-auto  my-auto " >
-                                            <p><b>{{cart.itemcost*quantityofItem}}</b></p>
+                                            <p><b *ngIf="initialQUuantity==1 ;else quantityCHange">{{ord.item.itemcost}}</b></p>
+                                            
+                                                <ng-template #quantityCHange>
+                                                    <p><b>   {{itemCost1}}</b></p>
+                                                </ng-template> 
                                         </div>
                                         
                                         
@@ -171,24 +167,24 @@
                                     <pagination-controls (pageChange)="p = $event"></pagination-controls>
                                 </div>
 
-                                <div class="row ">
+                                <div class="row" >
                                     <div class="col">
                                         <div class="row justify-content-between">
                                             <div class="col-4">
                                                 <p><b>Total</b></p>
                                             </div>
                                             <div class="flex-sm-col col-auto">
-                                                <p class="mb-1"><b>{{total*quantityofItem}}</b></p>
+                                                <p class="mb-1"><b>{{total}}</b></p>
                                             </div>
                                         </div>
                                         <hr class="my-0">
                                     </div>
                                 </div>
-                                <div class="row" *ngIf="valid">
+                                <div class="row" *ngIf="total>0">
                                     <div class="col-12">
                                         <button class="btn btn-primary mb-3" (click)="payment(total)"
                                             style="margin-left: 30vh;margin-top: 5vh;">
-                                            <span class="ps-3">Pay  &#x20B9;{{total*quantityofItem}}</span>
+                                            <span class="ps-3">Pay  &#x20B9;{{total}}</span>
                                             <span class="fas fa-arrow-right"></span>
                                         </button>
                                     </div>

@@ -1,7 +1,9 @@
 <app-menu></app-menu>
 <div class="bg-img">
   
-    <div><button class="btn btn-success" *ngIf="!hardcodedAuthentication.isAdminLoggedIn() && hardcodedAuthentication.isRestLoggedIn() && !hardcodedAuthentication.isUserLoggedIn()" routerLink="/registerItem" (click)="addItem()">Add Item</button></div>
+    <div><button class="btn btn-success" *ngIf="!hardcodedAuthentication.isAdminLoggedIn() && hardcodedAuthentication.isRestLoggedIn() && !hardcodedAuthentication.isUserLoggedIn()" routerLink="/registerItem" (click)="addItem()">Add Item</button>
+    <button class="btn btn-success" *ngIf="!hardcodedAuthentication.isAdminLoggedIn() && hardcodedAuthentication.isRestLoggedIn() && !hardcodedAuthentication.isUserLoggedIn()"  (click)="viewOoders()">View Orders</button>
+    </div>
     <div class="container">
                 <div class="row">
                     <div *ngFor="let item of items | paginate: { itemsPerPage: count, currentPage: p }" class="col-4 col-md-4 mt-3">

@@ -34,6 +34,8 @@ import { ErrorComponent } from './component/error/error.component';
 import { CartComponent } from './component/cart/cart.component';
 import { CustomerAddComponent } from './component/customer-add/customer-add.component';
 import { PaymentSuccessComponent } from './component/payment-success/payment-success.component';
+import { PreviousOrderrestaurantComponent } from './component/previous-orderrestaurant/previous-orderrestaurant.component';
+import { PreviousOrderCustomerComponent } from './component/previous-order-customer/previous-order-customer.component';
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import { PaymentSuccessComponent } from './component/payment-success/payment-suc
     CartComponent,
     CustomerAddComponent,
     PaymentSuccessComponent,
+    PreviousOrderrestaurantComponent,
+    PreviousOrderCustomerComponent,
   ],
   imports: [
     BrowserModule,
