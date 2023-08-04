@@ -89,7 +89,8 @@ export class CartComponent {
         console.log(this.order);
        for(let i=0;i<=this.order.length;i++){
         for(let j=0;j<=this.order.length;j++){
-          this.total+=this.order[i][j].item.itemcost*this.initialQUuantity;
+          console.log( this.order[i][j].item.itemcost);
+          this.total+=this.order[i][j].item.itemcost*this.order[i][j].quantity;
         }
        }
       })
@@ -146,7 +147,6 @@ export class CartComponent {
     this.itemCost1=cost;
   }
   this.itemCost1=cost*this.initialQUuantity
-
   }
   decrease(id:number,cost:number){
     this.initialQUuantity--;
@@ -159,7 +159,7 @@ export class CartComponent {
     this.dialog.open(CustomerAddComponent, {
       // this.router.navigate(['paymentsuccess'])
       height: '73vh',
-      width: '150vh',  
+      width: '90vh',  
     });
    
   }

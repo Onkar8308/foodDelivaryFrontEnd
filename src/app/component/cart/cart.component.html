@@ -128,7 +128,10 @@
                                 <div class="card-header ">
                                     <h2 class="card-title space">YOUR ORDER <span
                                             class=" small text-muted ml-2 cursor-pointer">EDIT SHOPPING BAG</span> </h2>
-                                    <hr class="my-3">
+                                            <h2 class="small text-muted ml-2 cursor-pointer">clear cart</h2>
+                                            <hr class="my-3">
+                                        </div>
+                                 <div class="card-header">               
                                 </div>
                                 <div class="card-body pt-0" style="background-color:bisque;" *ngFor="let ord of orders  | paginate: { itemsPerPage: count, currentPage: p }">
                                     <div class="row  justify-content-between">
@@ -146,15 +149,10 @@
                                             </div>
                                         </div>
                                          <div class=" pl-0 flex-sm-col col-auto  my-auto">
-                                           
-                                            <button (click)="decrease(ord.item.itemid,ord.item.itemcost)">-</button>{{initialQUuantity}}<button (click)="increase(ord.item.itemid,ord.item.itemcost)">+</button>
+                                          quantity: {{ord.quantity}}
                                         </div> 
                                         <div class=" pl-0 flex-sm-col col-auto  my-auto " >
-                                            <p><b *ngIf="initialQUuantity==1 ;else quantityCHange">{{ord.item.itemcost}}</b></p>
-                                            
-                                                <ng-template #quantityCHange>
-                                                    <p><b>   {{itemCost1}}</b></p>
-                                                </ng-template> 
+                                            <p><b >{{ord.item.itemcost*ord.quantity}}</b></p>
                                         </div>
                                         
                                         

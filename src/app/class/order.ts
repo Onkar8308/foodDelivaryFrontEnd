@@ -8,6 +8,7 @@ export class Order {
         public itemid:any,
         public customerid:number,
         public foodCart_Id:number,
-        public orderDate:Date
+        public orderDate:Date,
+        public intitalQuantity:number
     ){}
 }

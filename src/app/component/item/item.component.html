@@ -15,7 +15,8 @@
                             </div>
                             <div class="row" style=" margin-top: 2%; margin-left: 8%;">
                                 <button class=" a btn-success col-5" style="margin-right: 3%;" *ngIf="hardcodedAuthentication.isUserLoggedIn() && item.itemstatus=='Available'"  (click)="addToCart(item.itemid)">Add to Cart</button>
-                                <button class=" a col-5 btn-success" style="text-align: center;" *ngIf="!hardcodedAuthentication.isAdminLoggedIn()">{{item.itemstatus}}</button>
+                               
+                                <button class=" a col-5 btn-success" style="text-align: center; margin-top: 5px;" *ngIf="!hardcodedAuthentication.isAdminLoggedIn()">{{item.itemstatus}}</button>
                             </div>
                             <div class="row" style=" margin-top: 2%; margin-left: 8%;">
                                 <button class=" a btn-success col-5" style="margin-right: 3%;" *ngIf="!hardcodedAuthentication.isAdminLoggedIn() && hardcodedAuthentication.isRestLoggedIn()" (click)="updateItem(item.itemid)"> Update Item</button>

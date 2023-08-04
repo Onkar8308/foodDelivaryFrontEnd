@@ -31,9 +31,9 @@ export class PreviousOrderCustomerComponent implements OnInit {
   }
   orderAgain(custId:number,restId:number,itemId:number,cartId:number,itemcost:number){
 console.log(custId,restId,itemId,cartId,itemcost);
-    this.orderService.saveOrder(custId,restId,itemId,cartId).subscribe(repeatedCart=>{
-      console.log(repeatedCart);
-    })
+    // this.orderService.saveOrder(custId,restId,itemId,cartId,).subscribe(repeatedCart=>{
+    //   console.log(repeatedCart);
+    // })
 
     alert("item added to your cart succesfully")
     this.matDialogref.close();
