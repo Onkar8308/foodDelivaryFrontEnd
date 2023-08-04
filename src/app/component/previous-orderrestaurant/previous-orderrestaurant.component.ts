@@ -11,6 +11,8 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class PreviousOrderrestaurantComponent implements OnInit {
 
+  p: number = 1;
+  count: number = 6;
   restID:any;
  public orders:any;
   constructor(

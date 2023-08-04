@@ -78,8 +78,8 @@ export class MenuComponent{
   //for login popup
   Openpopup(){
     this.dialog.open(LoginComponent,{
-      width:'60%',
-      height:'400px'
+      width:'50%',
+      height:'500px'
     })
   }
 

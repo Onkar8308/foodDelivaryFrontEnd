@@ -1,13 +1,13 @@
 <app-menu></app-menu>
-    <div class=" container-fluid my-5 ">
+    <div class=" container-fluid">
         <div class="row justify-content-center ">
             <div class="col-xl-10">
                 <div class="card shadow-lg "
-                    style="background-image: url('https://img.freepik.com/free-vector/flat-design-street-food-market-illustration_23-2150517568.jpg?size=626&ext=jpg');">
+                    style="background-image: url('https://wallpaperaccess.com/full/1843875.jpg'); background-color: grey; background-blend-mode: multiply;">
                     <div class="row p-2 mt-5 fs-3 justify-content-between mx-sm-2">
                         <div class="col" style="font-size: large;">
                             <p class="text-muted space mb-0  shop"> {{cartDetails.cust.customername}}</p>
-                            <p class="text-muted space mb-0 shop">{{cartDetails.cust.customermobilenumber}}</p>
+                            <p class="text-muted space mb-0  shop">{{cartDetails.cust.customermobilenumber}}</p>
                         </div>
                         <div class="col">
                             <div class="row justify-content-right " style="margin-left:60vh ;">
@@ -35,18 +35,18 @@
                     <div class="row justify-content-around" >
                         <div class="col-md-5" >
                             <form [formGroup]="addressForm" >
-                                <div class="card border-0" >
+                                <div class="card border-0" style="width: 500px;" >
                                     <div class="card-header pb-0" >
                                         <h2 class="card-title space ">Checkout</h2>
                                         <p class="card-text text-muted mt-4  space">SHIPPING DETAILS</p>
                                         <hr class="my-0">
                                     </div>
                                     <div class="container p-0" >
-                                        <div class="card px-4" style="background-color: aqua; "> 
+                                        <div class="card px-4" > 
                                             <div class="row gx-3">
                                                 <div class="col-12">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">Adress line 1</p>
+                                                        <p class="text mb-1" style="font-weight: bold; font-size: 17px;">Address</p>
                                                         <input class="form-control mb-3" formControlName="area"
                                                             type="text" placeholder="*Enter Area" value="">
                                                         <span
@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">City </p>
+                                                        <p class="text mb-1" style="font-weight: bold; font-size: 17px;">City </p>
                                                         <input class="form-control mb-3" formControlName="city"
                                                             type="text" placeholder="*City">
                                                         <span
@@ -66,7 +66,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">state</p>
+                                                        <p class="text mb-1" style="font-weight: bold; font-size: 17px;">state</p>
                                                         <input class="form-control mb-3" formControlName="state"
                                                             type="text" placeholder="*State">
                                                         
@@ -78,7 +78,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="d-flex flex-column">
-                                                        <p class="text mb-1">country</p>
+                                                        <p class="text mb-1" style="font-weight: bold; font-size: 17px;">country</p>
                                                         <input class="form-control mb-3" formControlName="country"
                                                             type="text" placeholder="*country">
                                                         <span
@@ -87,7 +87,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
-                                                    <div class="d-flex flex-column">
+                                                    <div class="d-flex flex-column" style="font-weight: bold; font-size: 17px;">
                                                         <p class="text mb-1">pincode</p>
                                                         <input class="form-control mb-3 pt-2 " formControlName="pincode"
                                                             type="number" placeholder="*enter 6 digit pincode"
@@ -106,14 +106,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button class="btn btn-primary mb-3"
+                                                    <button class="btn btn-dark"
                                                         [disabled]="addressForm.invalid" (click)="saveAdd()">
-                                                        <span class="ps-3">Save new address</span>
+                                                        <span class="ps-3">Save New Address</span>
                                                         <span class="fas fa-arrow-right"></span>
                                                     </button>
-                                                    <button class="btn btn-primary mb-3" (click)="showPreviusAdd()"
+                                                    <button class="btn btn-dark mb-3" (click)="showPreviusAdd()"
                                                         style="margin-left: 10vh;">
-                                                        <span class="ps-3">use privious address</span>
+                                                        <span class="ps-3">Use Previous Address</span>
                                                         <span class="fas fa-arrow-right"></span>
                                                     </button>
                                                 </div>

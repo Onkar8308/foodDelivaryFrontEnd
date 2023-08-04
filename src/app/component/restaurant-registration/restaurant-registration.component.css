@@ -1,22 +1,14 @@
-/* .background-image {
-    background: url(https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?cs=srgb&dl=pexels-rovenimagescom-949587.jpg&fm=jpg);
-    height: 150vh;
-    background-size: cover;
-    background-position: center;
+*{
+    font-family: 'Poppins', sans-serif;
+    /* color: white; */
 }
-.form-box {
-    background-color: rgba(118, 96, 96, 0.8); 
-    padding: 20px;
-    border-radius: 10px;
-    margin: 50px auto 20px;
-    max-width: 500px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    color: white;
-  } */
-
-
   .register{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background: url("restaurantbg.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: grey;
+    background-blend-mode: multiply;
+    /* background: -webkit-linear-gradient(left, #3931af, #00c6ff); */
     margin-top: 3%;
     padding: 3%;
 }
@@ -38,7 +30,9 @@
     cursor: pointer;
 }
 .register-right{
-    background: #f8f9fa;
+    background: url("   restaurantbg2.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
 }
@@ -73,9 +67,9 @@
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #0062cc;
+    background: gray;
     color: #fff;
-    font-weight: 600;
+    font-weight: 700;
     width: 50%;
     cursor: pointer;
 }
@@ -114,4 +108,10 @@
 
 .form-group{
     margin-top: 1rem;
+}
+#btnlogin:hover{
+    background-color: lightslategray;
+}
+.btnRegister:hover{
+    background-color: lightslategray;
 }

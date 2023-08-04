@@ -40,5 +40,8 @@ updateOrderStatus(orderId:number){
 deleteOrderById(orderId:number){
   return this.http.delete<Order>(`${this.baseUrl}/deleteOrderById/${orderId}`);
 }
+dleteOrderHistory(custId:number){
+    return this.http.delete<Order>(`${this.baseUrl}/deleteOrderhistory/${custId}`);
+}
 
 }

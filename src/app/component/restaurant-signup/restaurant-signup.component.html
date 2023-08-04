@@ -9,10 +9,9 @@
 </head>
 
 <body>
-  <app-menu></app-menu>
   <div class="login-box">
     <h2>Login</h2>
-    <form (ngSubmit)="loginRestaurant()" #LoginForm="ngForm" novalidate>
+    <form (ngSubmit)="loginRestaurant()" #LoginForm="ngForm">
       <div class="user-box">
         <input type="text" class="form-control" #restloginemail="ngModel" [(ngModel)]="loginData.restloginemail"
           name="restloginemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
@@ -25,22 +24,17 @@
         </span>
         <label>Email</label>
       </div>
-      <!-- <div class="user-box">
-        <input type="password" name="" required="">
-        <label>Password</label>
-      </div> -->
-      <!-- <label class="user-box">Password</label> -->
       <div class="user-box">
         <input type="password" #restloginpassword="ngModel" [(ngModel)]="loginData.restloginpassword"
           name="restloginpassword" required>
-        <label>Password</label>
 
         <span class="text-danger"
           *ngIf="(restloginpassword.touched || LoginForm.submitted) && restloginpassword.errors?.['required']">
           Password is required
         </span>
+        <label>Password</label>
       </div>
-      <button type="submit" class="btn btn-success">
+      <button type="submit" [disabled]="!LoginForm.valid" class="btn btn-danger">
 
         <span></span>
         <span></span>
