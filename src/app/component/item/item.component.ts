@@ -66,7 +66,6 @@ customerid:number;
        )
   }
 
-  
 
   addToCart(itemId:number): void {
     this.id=this.route.snapshot.params['id'];

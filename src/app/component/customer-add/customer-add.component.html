@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let customerAdd of customerAddress" class="bg-primary">
+        <tr *ngFor="let customerAdd of customerAddress  | paginate: { itemsPerPage: count, currentPage: p }" class="bg-primary">
             <td>{{customerAdd.area}}</td>
             <td>{{customerAdd.city }}</td>
             <td>{{customerAdd.country}}</td>
@@ -29,4 +29,7 @@
         </tbody>
     </table>
 <hr>
+</div>
+<div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

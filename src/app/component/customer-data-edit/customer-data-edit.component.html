@@ -1,8 +1,11 @@
 <app-menu></app-menu>
-<div class="container">
-    <div class="form-wrapper">
+<html>
+
+  <div class="container">
+    <div class="content">
       <form (ngSubmit)="updateItem()" #itemForm="ngForm">
         <div class="form-group">
+          <label for="restname" class="control-label">Customer Name:</label>
           <input
             type="text"
             class="form-control"
@@ -16,6 +19,7 @@
             <div *ngIf="customername.errors?.['required']" class="text-danger">Name is required.</div>
           </div>
         </div>
+        <label for="restname" class="control-label">Customer Email:</label>
         <div class="form-group">
           <input
             type="email"
@@ -27,12 +31,14 @@
             [(ngModel)]="customer.customeremail"
             #customeremail="ngModel"
           />
+          
           <div *ngIf="customeremail.invalid && (customeremail.dirty || customeremail.touched)">
             <div *ngIf="customeremail.errors?.['required']" class="text-danger">Email is required.</div>
             <div *ngIf="customeremail.errors?.['pattern']" class="text-danger">Invalid email format.</div>
           </div>
         </div>
         <div class="form-group">
+          <label for="restname" class="control-label">Mobile Number:</label>
           <input
             type="text"
             class="form-control"
@@ -61,3 +67,4 @@
     </div>
   </div>
   
+  </html>

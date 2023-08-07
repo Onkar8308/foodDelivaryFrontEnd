@@ -159,7 +159,7 @@ export class CartComponent {
     this.dialog.open(CustomerAddComponent, {
       // this.router.navigate(['paymentsuccess'])
       height: '73vh',
-      width: '90vh',  
+      width: '110vh',  
     });
    
   }
